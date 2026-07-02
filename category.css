@@ -1,0 +1,677 @@
+/* ============================================================
+   Bonito Handbook — Category page
+   Design language: architectural specimen sheet meets monograph
+   Same palette as PU cabinet page + patterns for 4 category types
+   ============================================================ */
+
+:root {
+  --ink:        #1A1A1A;
+  --ink-soft:   #2D2D2C;
+  --bone:       #E8E4DC;
+  --bone-deep:  #D9D5CC;
+  --paper:      #F7F5F0;
+  --clay:       #B3614E;
+  --clay-soft:  #C9826F;
+  --line:       #C8C3B7;
+  --text:       #2D2D2C;
+  --text-soft:  #6B665D;
+  --text-mute:  #9B968B;
+
+  --success:    #4A7A4B;
+  --success-lt: #E5EFE5;
+  --warn:       #B3614E;
+  --warn-lt:    #F5E5DE;
+
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body:    'Inter', -apple-system, system-ui, sans-serif;
+  --mono:    'JetBrains Mono', 'SF Mono', Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.loading-note {
+  padding: 120px 40px;
+  text-align: center;
+  color: var(--text-mute);
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Beta banner */
+.beta-banner {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 10px 32px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  letter-spacing: 0.02em;
+}
+.banner-pill {
+  background: var(--clay);
+  color: var(--bone);
+  padding: 3px 9px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+.banner-link {
+  margin-left: auto;
+  color: var(--bone);
+  text-decoration: none;
+  font-size: 12px;
+  opacity: 0.7;
+}
+.banner-link:hover { opacity: 1; }
+
+/* Page container */
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 48px 60px;
+}
+
+/* ============ HEADER ============ */
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+
+.crumbs {
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.crumbs a { color: var(--text-soft); text-decoration: none; }
+.crumbs a:hover { color: var(--ink); }
+.crumbs .sep { margin: 0 10px; color: var(--text-mute); }
+.crumbs .current { color: var(--ink); font-weight: 500; }
+
+.erp-strip {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.erp-label { color: var(--text-mute); letter-spacing: 0.12em; font-size: 10px; }
+.erp-code { color: var(--ink); font-weight: 500; }
+.erp-sep { color: var(--text-mute); }
+.erp-finish { color: var(--text-soft); }
+
+/* ============ HERO ============ */
+.hero {
+  margin-bottom: 40px;
+}
+
+.title-block { max-width: 780px; }
+
+.eyebrow {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--clay);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.product-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(46px, 5.2vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 30px;
+}
+
+.lede {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  font-weight: 300;
+  max-width: 32em;
+  margin-bottom: 44px;
+}
+
+.measurements {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  max-width: 640px;
+}
+.m-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.m-row:last-child { border-bottom: none; }
+.m-axis {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+.m-range {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.m-range .m-dash {
+  color: var(--text-mute);
+  margin: 0 4px;
+  font-weight: 300;
+}
+.m-unit {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+}
+
+/* ============ CONTENT BLOCKS ============ */
+.block {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 48px;
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+}
+.block-num {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+  padding-top: 6px;
+}
+.block-content { max-width: 880px; min-width: 0; }
+.block-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.block-sub {
+  font-size: 15px;
+  color: var(--text-soft);
+  margin-bottom: 32px;
+  max-width: 36em;
+}
+
+.prose p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 36em;
+}
+
+/* ============ COMPARISON TABLE (Prelam) ============ */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin-top: 8px;
+  font-size: 13px;
+}
+.comparison-table thead th {
+  text-align: left;
+  padding: 14px 16px;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--line);
+  background: var(--bone);
+}
+.comparison-table thead th:first-child {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.comparison-table thead th:nth-child(2) {
+  color: var(--ink);
+  font-weight: 600;
+}
+.comparison-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: baseline;
+}
+.comparison-table tbody tr:last-child td { border-bottom: none; }
+.comparison-table .row-label {
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.comparison-table .row-val {
+  color: var(--text);
+  font-size: 14px;
+}
+.comparison-table .row-val.primary {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ============ SPEC TABLE ============ */
+.spec-table {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+}
+.spec-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.spec-key {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.spec-val {
+  font-family: var(--display);
+  font-size: 19px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.4;
+}
+.erp-inline {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-soft);
+  background: var(--bone);
+  padding: 2px 8px;
+  margin-left: 10px;
+  letter-spacing: 0.05em;
+  vertical-align: 2px;
+}
+
+/* ============ COLOUR PALETTE (Saint Gobain) ============ */
+.palette-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 8px;
+}
+.palette-group {}
+.palette-heading {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.swatch-color {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  transition: transform 0.15s;
+}
+.swatch-color:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.swatch-name {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* ============ SYSTEM MATRIX (Wardrobe) ============ */
+.system-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 8px;
+}
+.system-family {
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.family-header {
+  padding: 20px 24px;
+  background: var(--bone);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+.family-name {
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.family-heading {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--clay);
+  text-transform: uppercase;
+}
+.family-options {}
+.option-row {
+  display: grid;
+  grid-template-columns: 200px 100px 1fr;
+  gap: 20px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+  font-size: 13px;
+}
+.option-row:last-child { border-bottom: none; }
+.option-label {
+  font-weight: 500;
+  color: var(--ink);
+}
+.option-type {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.option-note {
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+/* ============ RULE CARDS (Wardrobe cane rule) ============ */
+.rule-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+.rule-card {
+  padding: 28px 24px;
+  background: var(--bone);
+  border-left: 3px solid var(--clay);
+}
+.rule-axis {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+}
+.rule-metric {
+  font-family: var(--display);
+  font-size: 42px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.rule-body {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ============ HANDLE GRID (Handles) ============ */
+.handle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+.handle-family {
+  border: 1px solid var(--line);
+  padding: 24px 20px;
+  background: var(--paper);
+}
+.handle-family-name {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.handle-family-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--clay);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.handle-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.handle-item {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.handle-item:last-child { border-bottom: none; }
+.handle-name {
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.handle-sub {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.handle-note {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============ COMPATIBILITY TABLE ============ */
+.compat-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin-top: 8px;
+  font-size: 12px;
+}
+.compat-table thead th {
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--line);
+  background: var(--bone);
+  text-align: center;
+  font-weight: 500;
+}
+.compat-table thead th.lead {
+  text-align: left;
+  color: var(--ink);
+}
+.compat-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  color: var(--text-soft);
+}
+.compat-table tbody tr:last-child td { border-bottom: none; }
+.compat-table .row-label {
+  text-align: left;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 13px;
+}
+.compat-table .row-val.yes {
+  color: var(--success);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.compat-table .row-val.no {
+  color: var(--warn);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.compat-table .row-val.partial {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* ============ NOTES ============ */
+.note-list {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--clay);
+  margin-top: 8px;
+}
+.note {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+  padding: 18px 0 18px 24px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.note:last-child { border-bottom: none; }
+.note-marker {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--clay);
+  line-height: 1;
+}
+.note-body strong {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+.note-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 40em;
+}
+
+/* ============ FOOTER ============ */
+.page-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 36px;
+  margin-top: 40px;
+  border-top: 1px solid var(--ink);
+  font-size: 12px;
+}
+.foot-brand {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink);
+  margin-right: 16px;
+}
+.foot-tag {
+  font-family: var(--display);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-soft);
+}
+.foot-right {
+  display: flex;
+  gap: 24px;
+  color: var(--text-soft);
+  align-items: baseline;
+}
+.foot-mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .page { padding: 24px 32px 48px; }
+  .block { grid-template-columns: 1fr; gap: 20px; padding: 48px 0; }
+  .block-title { font-size: 30px; }
+  .spec-row { grid-template-columns: 1fr; gap: 4px; }
+  .spec-key { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .option-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 20px; }
+  .option-type { font-size: 9px; }
+  .family-header { flex-direction: column; gap: 8px; padding: 16px 20px; }
+  .compat-table thead th, .compat-table tbody td { padding: 8px 6px; font-size: 10px; }
+}
+
+@media (max-width: 640px) {
+  .page { padding: 16px 20px 36px; }
+  .beta-banner { padding: 8px 20px; flex-wrap: wrap; }
+  .banner-link { margin-left: 0; }
+  .page-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .product-title { font-size: 40px; }
+  .lede { font-size: 15px; }
+  .swatch-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+}

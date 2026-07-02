@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonito Handbook · Loading category</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="category.css">
+</head>
+<body>
+
+<div class="beta-banner">
+  <span class="banner-pill">BETA</span>
+  <span>Project Blueprint · category page</span>
+  <a href="index.html" class="banner-link">&larr; All categories</a>
+</div>
+
+<main class="page" id="pageRoot">
+  <!-- Content rendered by JS from categories.js -->
+  <div class="loading-note">Loading category…</div>
+</main>
+
+<script src="categories.js"></script>
+<script>
+// ============================================================
+// Bonito Handbook — Category page renderer
+// Loads a category from CATEGORIES data and renders the template
+// ============================================================
+
+const params = new URLSearchParams(window.location.search);
+const slug = params.get('cat') || 'prelam-hdhmr';
+const data = window.CATEGORIES[slug];
+
+if (!data) {
+  document.getElementById('pageRoot').innerHTML =
+    '<div style="padding: 80px 20px; text-align: center; color: #6B665D;">Category not found: <code>' + slug + '</code><br><br><a href="index.html" style="color: #B3614E;">Back to catalog</a></div>';
+} else {
+  document.title = data.title.replace(/<[^>]+>/g, ' ') + ' · Bonito Handbook';
+  renderPage(data);
+}
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderPage(d) {
+  const root = document.getElementById('pageRoot');
+  root.innerHTML = `
+    ${renderHeader(d)}
+    ${renderHero(d)}
+    ${d.blocks.map(renderBlock).join('')}
+    ${renderFooter(d)}
+  `;
+}
+
+function renderHeader(d) {
+  return `
+    <header class="page-head">
+      <nav class="crumbs">
+        ${d.breadcrumb.map((c, i) => i < d.breadcrumb.length - 1
+          ? `<a href="index.html">${esc(c)}</a><span class="sep">/</span>`
+          : `<span class="current">${esc(c)}</span>`).join('')}
+      </nav>
+      <div class="erp-strip">
+        <span class="erp-label">CODE</span>
+        <span class="erp-code">${esc(d.erp)}</span>
+        <span class="erp-sep">·</span>
+        <span class="erp-finish">${esc(d.tag)}</span>
+      </div>
+    </header>
+  `;
+}
+
+function renderHero(d) {
+  return `
+    <section class="hero">
+      <div class="title-block">
+        <span class="eyebrow">${esc(d.eyebrow)}</span>
+        <h1 class="product-title">${d.title}</h1>
+        <p class="lede">${esc(d.lede)}</p>
+        <div class="measurements">
+          ${d.measurements.map(m => `
+            <div class="m-row">
+              <span class="m-axis">${esc(m.axis)}</span>
+              <span class="m-range">${m.range}</span>
+              <span class="m-unit">${esc(m.unit)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderBlock(b) {
+  return `
+    <section class="block">
+      <div class="block-num">${esc(b.num)}</div>
+      <div class="block-content">
+        <h2 class="block-title">${esc(b.title)}</h2>
+        ${b.subtitle ? `<p class="block-sub">${esc(b.subtitle)}</p>` : ''}
+        ${b.prose ? `<div class="prose"><p>${esc(b.prose)}</p></div>` : ''}
+        ${b.comparisonTable ? renderComparisonTable(b.comparisonTable) : ''}
+        ${b.specTable ? renderSpecTable(b.specTable) : ''}
+        ${b.colourPalette ? renderColourPalette(b.colourPalette) : ''}
+        ${b.systemMatrix ? renderSystemMatrix(b.systemMatrix) : ''}
+        ${b.ruleCards ? renderRuleCards(b.ruleCards) : ''}
+        ${b.handleGrid ? renderHandleGrid(b.handleGrid) : ''}
+        ${b.compatibilityTable ? renderCompatibilityTable(b.compatibilityTable) : ''}
+        ${b.notes ? renderNotes(b.notes) : ''}
+      </div>
+    </section>
+  `;
+}
+
+// --- Component renderers (each block type has its own visual pattern) ---
+
+function renderComparisonTable(ct) {
+  return `
+    <table class="comparison-table">
+      <thead>
+        <tr>${ct.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr>
+      </thead>
+      <tbody>
+        ${ct.rows.map(row => `
+          <tr>
+            ${row.map((cell, i) => i === 0
+              ? `<td class="row-label">${esc(cell)}</td>`
+              : `<td class="row-val ${i === 1 ? 'primary' : ''}">${esc(cell)}</td>`).join('')}
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderSpecTable(rows) {
+  return `
+    <div class="spec-table">
+      ${rows.map(r => `
+        <div class="spec-row">
+          <div class="spec-key">${esc(r.key)}</div>
+          <div class="spec-val">${esc(r.val)}${r.erp ? `<span class="erp-inline">${esc(r.erp)}</span>` : ''}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderColourPalette(palette) {
+  return `
+    <div class="palette-groups">
+      ${palette.map(group => `
+        <div class="palette-group">
+          <div class="palette-heading">${esc(group.group)}</div>
+          <div class="swatch-grid">
+            ${group.swatches.map(s => `
+              <div class="swatch" title="${esc(s.name)}">
+                <div class="swatch-color" style="background:${esc(s.hex)}"></div>
+                <div class="swatch-name">${esc(s.name)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderSystemMatrix(matrix) {
+  return `
+    <div class="system-matrix">
+      ${matrix.map(m => `
+        <div class="system-family">
+          <div class="family-header">
+            <div class="family-name">${esc(m.family)}</div>
+            <div class="family-heading">${esc(m.heading)}</div>
+          </div>
+          <div class="family-options">
+            ${m.options.map(o => `
+              <div class="option-row">
+                <div class="option-label">${esc(o.label)}</div>
+                <div class="option-type">${esc(o.type)}</div>
+                <div class="option-note">${esc(o.note)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderRuleCards(cards) {
+  return `
+    <div class="rule-cards">
+      ${cards.map(c => `
+        <div class="rule-card">
+          <div class="rule-axis">${esc(c.axis)}</div>
+          <div class="rule-metric">${c.metric}</div>
+          <div class="rule-body">${esc(c.rule)}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderHandleGrid(grid) {
+  return `
+    <div class="handle-grid">
+      ${grid.map(family => `
+        <div class="handle-family">
+          <div class="handle-family-name">${esc(family.family)}</div>
+          <div class="handle-family-sub">${esc(family.subheading)}</div>
+          <div class="handle-items">
+            ${family.items.map(item => `
+              <div class="handle-item">
+                <div class="handle-name">${esc(item.name)}</div>
+                <div class="handle-sub">${esc(item.subline)}</div>
+                <div class="handle-note">${esc(item.note)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderCompatibilityTable(ct) {
+  return `
+    <table class="compat-table">
+      <thead>
+        <tr>${ct.headers.map((h, i) => `<th${i === 0 ? ' class="lead"' : ''}>${esc(h)}</th>`).join('')}</tr>
+      </thead>
+      <tbody>
+        ${ct.rows.map(row => `
+          <tr>
+            ${row.map((cell, i) => {
+              if (i === 0) return `<td class="row-label">${esc(cell)}</td>`;
+              const clean = String(cell).toLowerCase();
+              let cls = 'row-val';
+              if (clean === 'yes') cls += ' yes';
+              else if (clean === 'no') cls += ' no';
+              else cls += ' partial';
+              return `<td class="${cls}">${esc(cell)}</td>`;
+            }).join('')}
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderNotes(notes) {
+  return `
+    <div class="note-list">
+      ${notes.map(n => `
+        <div class="note">
+          <div class="note-marker">!</div>
+          <div class="note-body">
+            <strong>${esc(n.title)}</strong>
+            <p>${esc(n.body)}</p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderFooter(d) {
+  return `
+    <footer class="page-foot">
+      <div class="foot-left">
+        <span class="foot-brand">Bonito</span>
+        <span class="foot-tag">Live beautiful.</span>
+      </div>
+      <div class="foot-right">
+        <span>iLab · Innovation initiative</span>
+        <span class="foot-mono">${esc(d.erp)} · v1.0 · ${d.reference ? esc(d.reference) : 'Reference document'}</span>
+      </div>
+    </footer>
+  `;
+}
+</script>
+
+</body>
+</html>

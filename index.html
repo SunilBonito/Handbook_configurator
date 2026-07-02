@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonito Handbook · Category catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="category.css">
+<style>
+/* Index-specific styling — catalog grid */
+.catalog-intro {
+  padding: 40px 0 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+.catalog-title {
+  font-family: var(--display);
+  font-size: clamp(48px, 5.5vw, 72px);
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.catalog-lede {
+  font-size: 17px;
+  color: var(--text-soft);
+  font-weight: 300;
+  max-width: 40em;
+  line-height: 1.6;
+}
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+.cat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 28px 26px 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  position: relative;
+}
+.cat-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(26,26,26,0.08);
+}
+.cat-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  padding: 4px 10px;
+  border: 1px solid var(--clay);
+}
+.cat-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  margin-top: 12px;
+}
+.cat-name {
+  font-family: var(--display);
+  font-size: 32px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.cat-desc {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.cat-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.cat-erp {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.cat-arrow {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--clay);
+  transition: transform 0.15s;
+}
+.cat-card:hover .cat-arrow { transform: translateX(4px); }
+
+.cta-strip {
+  background: var(--bone);
+  border-left: 3px solid var(--clay);
+  padding: 32px 32px;
+  margin-bottom: 40px;
+}
+.cta-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--clay);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cta-title {
+  font-family: var(--display);
+  font-size: 26px;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.cta-body {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+  max-width: 40em;
+}
+</style>
+</head>
+<body>
+
+<div class="beta-banner">
+  <span class="banner-pill">BETA</span>
+  <span>Project Blueprint · handbook catalog · 4 categories</span>
+</div>
+
+<main class="page">
+  <section class="catalog-intro">
+    <h1 class="catalog-title">Handbook, digitised.</h1>
+    <p class="catalog-lede">Four categories from the Bonito Handbook v3.9, rebuilt as searchable, structured pages. One template renders every category — add a new category by adding data, not by writing new code.</p>
+  </section>
+
+  <div class="catalog-grid" id="catalogGrid">
+    <!-- Populated by JavaScript -->
+  </div>
+
+  <section class="cta-strip">
+    <div class="cta-eyebrow">Note for review</div>
+    <div class="cta-title">Same template, four categories.</div>
+    <div class="cta-body">All four pages below share a single template file. What changes between them is the data — the structure the CMS would eventually serve. A new category is a new data entry, not a new codebase. This is what "scales" means in practice.</div>
+  </section>
+
+  <footer class="page-foot">
+    <div class="foot-left">
+      <span class="foot-brand">Bonito</span>
+      <span class="foot-tag">Live beautiful.</span>
+    </div>
+    <div class="foot-right">
+      <span>iLab · Innovation initiative</span>
+      <span class="foot-mono">Handbook v3.9 · Blueprint v1.0</span>
+    </div>
+  </footer>
+</main>
+
+<script src="categories.js"></script>
+<script>
+// Pull card summaries from the shared data
+const cardSummaries = {
+  "prelam-hdhmr": "The pre-laminated board that skips on-site pasting. Structured comparison against regular HDHMR, 36 standard laminate options, thickness and warranty rules.",
+  "saint-gobain-shutter": "Premium lacquered glass shutters with a 25+ colour library across Planilaque, Pastel, and Metallic families. Kitchen category only — separate from general glass.",
+  "wardrobe-mechanism": "The system-level view for wardrobes. Two shutter families, three brand paths, cascading mechanism choices, and the cane infill rule that traps everyone.",
+  "handles": "Physical and handleless families with a compatibility matrix. Lamezia rules, G-profile applicability, and the on-site rejections that happen when the compatibility isn't checked."
+};
+
+const grid = document.getElementById('catalogGrid');
+Object.keys(window.CATEGORIES).forEach(slug => {
+  const cat = window.CATEGORIES[slug];
+  const cardHtml = `
+    <a class="cat-card" href="category.html?cat=${encodeURIComponent(slug)}">
+      <div class="cat-tag">${cat.tag}</div>
+      <div class="cat-eyebrow">${cat.eyebrow}</div>
+      <div class="cat-name">${cat.title.replace(/<br>/g, ' ')}</div>
+      <div class="cat-desc">${cardSummaries[slug] || cat.lede}</div>
+      <div class="cat-meta">
+        <span class="cat-erp">${cat.erp}</span>
+        <span class="cat-arrow">Open handbook &rarr;</span>
+      </div>
+    </a>
+  `;
+  grid.insertAdjacentHTML('beforeend', cardHtml);
+});
+</script>
+
+</body>
+</html>
