@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blueprint Configurator · Concept Preview · Bonito</title>
+<title>Blueprint Configurator · Handbook-Integrated · Bonito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
 
 <div class="concept-banner">
   <span class="banner-pill">CONCEPT</span>
-  <span>Non-functional preview — for direction only</span>
-  <a href="index.html" class="banner-link">&larr; Catalog</a>
+  <span>Non-functional preview — configurator with handbook data inline</span>
+  <span class="banner-note">Prevents NCs by showing rules at point of choice</span>
 </div>
 
 <main class="page">
 
   <header class="page-head">
     <nav class="crumbs">
-      <a href="index.html">Material catalog</a>
+      <span>Material catalog</span>
       <span class="sep">/</span>
       <span>Configurator</span>
       <span class="sep">/</span>
@@ -36,110 +36,469 @@
   </header>
 
   <section class="hero-intro">
-    <span class="eyebrow">Concept · configurator preview</span>
-    <h1 class="page-title">Build a cabinet from validated parts.</h1>
-    <p class="lede">Pick a body, a shutter, hardware and finish. The system enforces valid combinations. The output is a spec-perfect quote and a 3D preview — ready to drop into ODP.</p>
+    <span class="eyebrow">Concept · handbook-integrated configurator</span>
+    <h1 class="page-title">Build from parts. Rules enforced inline.</h1>
+    <p class="lede">Handbook rules appear at the moment of choice, not after it. Pick a material, a shutter, hardware. The system flags invalid combinations before they reach QC. NCs prevented at source.</p>
   </section>
 
   <!-- 3-panel workspace -->
   <section class="workspace">
 
-    <!-- LEFT: Parts library -->
+    <!-- LEFT: Parts library with 4 handbook category tabs -->
     <aside class="parts-panel">
       <div class="panel-head">
-        <span class="panel-eyebrow">Step 1 of 4</span>
-        <h2 class="panel-title">Parts library</h2>
+        <span class="panel-eyebrow">Parts library · from handbook v3.9</span>
+        <h2 class="panel-title">Choose parts</h2>
       </div>
 
-      <!-- Category tabs -->
-      <nav class="cat-tabs">
-        <button class="cat-tab active">Body</button>
-        <button class="cat-tab">Shutter</button>
-        <button class="cat-tab">Hardware</button>
-        <button class="cat-tab">Finish</button>
+      <!-- Category tabs — 4 handbook categories -->
+      <nav class="cat-tabs" id="catTabs">
+        <button class="cat-tab active" data-cat="prelam">Prelam</button>
+        <button class="cat-tab" data-cat="saint-gobain">Saint Gobain</button>
+        <button class="cat-tab" data-cat="wardrobe">Wardrobe</button>
+        <button class="cat-tab" data-cat="handles">Handles</button>
       </nav>
 
       <!-- Search -->
       <div class="parts-search">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" placeholder="Search cabinet bodies" value="" disabled>
+        <input type="text" placeholder="Search this category" disabled>
       </div>
 
-      <!-- Filter chips -->
-      <div class="filter-chips">
-        <span class="filter-chip active">Kitchen</span>
-        <span class="filter-chip">Wardrobe</span>
-        <span class="filter-chip">Loft</span>
-        <span class="filter-chip">Bed</span>
-      </div>
+      <!-- Category content — one per tab, only active shown -->
+      <div class="cat-content-wrap" id="catContentWrap">
 
-      <!-- Parts list -->
-      <div class="parts-list">
-        <div class="part-item selected">
-          <div class="part-thumb">
-            <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="8" width="44" height="60" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
-              <rect x="8" y="64" width="44" height="6" fill="#2F2F2D"/>
-            </svg>
+        <!-- ========== PRELAM ========== -->
+        <div class="cat-content active" data-cat="prelam">
+
+          <!-- Expandable handbook details header -->
+          <div class="handbook-details">
+            <button class="details-toggle" onclick="toggleDetails(this)">
+              <div class="toggle-left">
+                <span class="toggle-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+                <div class="toggle-text">
+                  <span class="toggle-title">Prelam HDHMR</span>
+                  <span class="toggle-sub">Material · pre-laminated board · v3.9</span>
+                </div>
+              </div>
+              <span class="toggle-hint">Read handbook</span>
+            </button>
+            <div class="details-body">
+
+              <p class="detail-lede">A factory-made engineered board where the laminate is already pressed and bonded during manufacturing. Not pasted later at the factory or on-site.</p>
+
+              <div class="detail-block">
+                <div class="detail-block-title">Prelam vs Regular</div>
+                <table class="mini-compare">
+                  <tr><td>Surface finish</td><td class="strong">Factory-pressed</td><td>Applied later</td></tr>
+                  <tr><td>Thickness</td><td class="strong">5.5mm · 16mm</td><td>6 · 18 · 24 mm</td></tr>
+                  <tr><td>Cost</td><td class="strong">Economical</td><td>+ Labour cost</td></tr>
+                  <tr><td>Customization</td><td class="strong">36 options</td><td>Any laminate</td></tr>
+                </table>
+              </div>
+
+              <div class="detail-block rules">
+                <div class="detail-block-title">Critical rules</div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Thickness includes laminate.</strong> 16mm Prelam is 16mm total, not 16 + laminate.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>No 24mm Prelam.</strong> If design needs 24mm, switch to Regular HDHMR.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>No custom designs.</strong> Cannot be used for any customised solution.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="part-meta">
-            <span class="part-code">BK-450</span>
-            <span class="part-name">Bottom cabinet, 450 mm</span>
-            <span class="part-hint">1 shutter · fixed shelf</span>
-          </div>
-          <div class="part-check">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+          <!-- Parts list — actual pickable items -->
+          <div class="parts-list-title">Material options</div>
+          <div class="parts-list">
+            <div class="part-item selected">
+              <div class="part-thumb pt-material">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="10" width="40" height="40" fill="#4B4949" stroke="#5F5E5A" stroke-width="0.5"/>
+                  <rect x="10" y="8" width="40" height="4" fill="#B3614E" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">BD-PL-16</span>
+                <span class="part-name">Prelam HDHMR · 16mm</span>
+                <span class="part-hint">7 yr + 3 yr warranty</span>
+              </div>
+              <div class="part-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+
+            <div class="part-item">
+              <div class="part-thumb pt-material">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="14" width="40" height="32" fill="#4B4949" stroke="#5F5E5A" stroke-width="0.5"/>
+                  <rect x="10" y="12" width="40" height="4" fill="#B3614E" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">BD-PL-5</span>
+                <span class="part-name">Prelam HDHMR · 5.5mm</span>
+                <span class="part-hint">For shutter backing</span>
+              </div>
+            </div>
+
+            <div class="part-item">
+              <div class="part-thumb pt-material">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="6" width="40" height="48" fill="#4B4949" stroke="#5F5E5A" stroke-width="0.5"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">BD-HD-18</span>
+                <span class="part-name">Regular HDHMR · 18mm</span>
+                <span class="part-hint">For custom finishes</span>
+              </div>
+            </div>
+
+            <div class="part-item disabled">
+              <div class="part-thumb pt-material">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="2" width="44" height="56" fill="#4B4949" stroke="#5F5E5A" stroke-width="0.5"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">BD-PL-24</span>
+                <span class="part-name">Prelam HDHMR · 24mm</span>
+                <span class="part-warn-text">Not available in Prelam · use Regular HDHMR</span>
+              </div>
+              <div class="part-warn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="part-item">
-          <div class="part-thumb">
-            <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="8" width="52" height="60" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
-              <rect x="4" y="64" width="52" height="6" fill="#2F2F2D"/>
-              <line x1="30" y1="8" x2="30" y2="64" stroke="#5F5E5A" stroke-width="0.5"/>
-            </svg>
+        <!-- ========== SAINT GOBAIN ========== -->
+        <div class="cat-content" data-cat="saint-gobain">
+
+          <div class="handbook-details">
+            <button class="details-toggle" onclick="toggleDetails(this)">
+              <div class="toggle-left">
+                <span class="toggle-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+                <div class="toggle-text">
+                  <span class="toggle-title">Saint Gobain Kitchen Shutters</span>
+                  <span class="toggle-sub">Shutter · lacquered glass · v3.9</span>
+                </div>
+              </div>
+              <span class="toggle-hint">Read handbook</span>
+            </button>
+            <div class="details-body">
+              <p class="detail-lede">Premium lacquered glass shutters for kitchen, storage and crockery. Frame profiles come in Champagne, Grey, or Silver.</p>
+
+              <div class="detail-block">
+                <div class="detail-block-title">Size limits</div>
+                <div class="detail-metrics">
+                  <div class="mini-metric"><span class="mm-axis">Width</span><span class="mm-range">300–500</span><span class="mm-unit">mm</span></div>
+                  <div class="mini-metric"><span class="mm-axis">Height</span><span class="mm-range">200–1200</span><span class="mm-unit">mm</span></div>
+                </div>
+              </div>
+
+              <div class="detail-block rules">
+                <div class="detail-block-title">Critical rules</div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Do not mix with profiled laminate.</strong> Thickness variations at handles create visible seams — client will reject.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Not for 24mm side panels.</strong> Standard 18mm side panels only.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>No L-corners in kitchen.</strong> Not manufacturable in this category.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="part-meta">
-            <span class="part-code">BK-600</span>
-            <span class="part-name">Bottom cabinet, 600 mm</span>
-            <span class="part-hint">2 shutter · fixed shelf</span>
+
+          <div class="parts-list-title">Colour · Planilaque</div>
+          <div class="swatch-grid">
+            <div class="mini-swatch selected"><div class="ms-color" style="background:#4B5058"></div><span>Titanium Grey</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#3B7A99"></div><span>Aqua Blue</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#1A1A1A"></div><span>Black</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#F0EDE6"></div><span>Pearl White</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#C0392B"></div><span>Flame Red</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#1E5F8B"></div><span>Atoll Blue</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#88A582"></div><span>Almond Green</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#E4B84A"></div><span>Solar Yellow</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#6FB89A"></div><span>Mint Green</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#8FA872"></div><span>Pista Green</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#D97D3E"></div><span>Fusion Orange</span></div>
+            <div class="mini-swatch"><div class="ms-color" style="background:#6B5B84"></div><span>Classic Purple</span></div>
+          </div>
+
+          <div class="parts-list-title mt">Frame profile</div>
+          <div class="parts-list">
+            <div class="part-item selected">
+              <div class="part-thumb pt-frame">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="6" width="48" height="48" fill="none" stroke="#C4A78B" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">SG-FR-CHM</span>
+                <span class="part-name">Champagne</span>
+                <span class="part-hint">Bonito default</span>
+              </div>
+              <div class="part-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-frame">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="6" width="48" height="48" fill="none" stroke="#7A7F85" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">SG-FR-GRY</span>
+                <span class="part-name">Grey</span>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-frame">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="6" width="48" height="48" fill="none" stroke="#B8B8B0" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">SG-FR-SLV</span>
+                <span class="part-name">Silver</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="part-item">
-          <div class="part-thumb">
-            <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="8" width="44" height="60" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
-              <line x1="8" y1="28" x2="52" y2="28" stroke="#5F5E5A" stroke-width="0.5"/>
-              <line x1="8" y1="46" x2="52" y2="46" stroke="#5F5E5A" stroke-width="0.5"/>
-              <rect x="8" y="64" width="44" height="6" fill="#2F2F2D"/>
-            </svg>
+        <!-- ========== WARDROBE ========== -->
+        <div class="cat-content" data-cat="wardrobe">
+
+          <div class="handbook-details">
+            <button class="details-toggle" onclick="toggleDetails(this)">
+              <div class="toggle-left">
+                <span class="toggle-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+                <div class="toggle-text">
+                  <span class="toggle-title">Modular Wardrobe & Mechanism</span>
+                  <span class="toggle-sub">System · shutters + mechanism · v3.9</span>
+                </div>
+              </div>
+              <span class="toggle-hint">Read handbook</span>
+            </button>
+            <div class="details-body">
+              <p class="detail-lede">Two shutter families — openable and sliding. Third path: aluminium profile. Shutter choice constrains mechanism, hardware, and infill.</p>
+
+              <div class="detail-block">
+                <div class="detail-block-title">Cane infill rule (traps everyone)</div>
+                <div class="rule-cards-mini">
+                  <div class="rc-mini">
+                    <div class="rc-axis">Height ≤ 2100 mm</div>
+                    <div class="rc-metric">Width ≤ 900 mm</div>
+                  </div>
+                  <div class="rc-mini">
+                    <div class="rc-axis">Height ≤ 900 mm</div>
+                    <div class="rc-metric">Width ≤ 1200 mm</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="detail-block rules">
+                <div class="detail-block-title">Critical rules</div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Cane width depends on height.</strong> Confirm height first, then apply width cap.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Accessories from Bonito Studio only.</strong> Shirt/belt pullouts, organisers — no third-party sources.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Aristo Nova = C&F construction.</strong> Visible track but same internals as C&F slider.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="part-meta">
-            <span class="part-code">BK-450-D3</span>
-            <span class="part-name">Bottom cabinet, 3 drawer</span>
-            <span class="part-hint">3 soft-close drawers</span>
+
+          <div class="parts-list-title">Shutter family</div>
+          <div class="parts-list">
+            <div class="part-item selected">
+              <div class="part-thumb pt-shutter">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="8" width="44" height="44" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
+                  <circle cx="14" cy="14" r="1.5" fill="#7A7A75"/>
+                  <circle cx="14" cy="46" r="1.5" fill="#7A7A75"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">WD-OPN</span>
+                <span class="part-name">Openable — hinged</span>
+                <span class="part-hint">Aristo Classical Doors</span>
+              </div>
+              <div class="part-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-shutter">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="8" width="20" height="44" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
+                  <rect x="32" y="8" width="20" height="44" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5" opacity="0.5"/>
+                  <line x1="8" y1="54" x2="52" y2="54" stroke="#7A7A75" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">WD-SLD</span>
+                <span class="part-name">Sliding — track-mounted</span>
+                <span class="part-hint">Bonito Elite / Lite / Slideline 18</span>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-shutter">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="8" width="44" height="44" fill="none" stroke="#7A7A75" stroke-width="2"/>
+                  <rect x="16" y="16" width="28" height="28" fill="#3D3D3A"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">WD-ALU</span>
+                <span class="part-name">Aluminium profile</span>
+                <span class="part-hint">Saint Gobain / Hettich / Bonito</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="part-item disabled">
-          <div class="part-thumb">
-            <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="8" width="44" height="60" fill="#3D3D3A" stroke="#5F5E5A" stroke-width="0.5"/>
-              <rect x="8" y="64" width="44" height="6" fill="#2F2F2D"/>
-              <circle cx="30" cy="38" r="8" fill="none" stroke="#5F5E5A" stroke-width="0.5"/>
-            </svg>
+        <!-- ========== HANDLES ========== -->
+        <div class="cat-content" data-cat="handles">
+
+          <div class="handbook-details">
+            <button class="details-toggle" onclick="toggleDetails(this)">
+              <div class="toggle-left">
+                <span class="toggle-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+                <div class="toggle-text">
+                  <span class="toggle-title">Handles &amp; Handleless</span>
+                  <span class="toggle-sub">Hardware · grip + profiles · v3.9</span>
+                </div>
+              </div>
+              <span class="toggle-hint">Read handbook</span>
+            </button>
+            <div class="details-body">
+              <p class="detail-lede">Physical handles must come from Bonito Studio only. Handleless profiles have strict shutter-type constraints.</p>
+
+              <div class="detail-block">
+                <div class="detail-block-title">Compatibility matrix</div>
+                <table class="mini-compat">
+                  <thead>
+                    <tr><th></th><th>Kitchen</th><th>Tall</th><th>Wardrobe</th><th>Acrylic</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Concealed</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td></tr>
+                    <tr><td>Folding</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td></tr>
+                    <tr><td>Surface</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td></tr>
+                    <tr><td>G-profile</td><td class="yes">Y</td><td class="yes">Y</td><td class="yes">Y</td><td class="no">N</td></tr>
+                    <tr><td>Lamezia</td><td class="yes">Y</td><td class="no">N</td><td class="no">N</td><td class="no">N</td></tr>
+                    <tr><td>Gola</td><td class="partial">Top/Loft</td><td class="no">N</td><td class="partial">Top/Loft</td><td class="no">N</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="detail-block rules">
+                <div class="detail-block-title">Critical rules</div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>Lamezia is kitchen-shutter only.</strong> Not for tall, not for wardrobe.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>No custom handle positions.</strong> Compatibility with soft-close will fail.</div>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-mark">!</span>
+                  <div><strong>No factory-made wooden handles.</strong> Offer surface handles in wood-tone finish instead.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="part-meta">
-            <span class="part-code">BK-450-SC</span>
-            <span class="part-name">Corner cabinet</span>
-            <span class="part-hint">Incompatible with current shutter</span>
-          </div>
-          <div class="part-warn">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+
+          <div class="parts-list-title">Handle type</div>
+          <div class="parts-list">
+            <div class="part-item selected">
+              <div class="part-thumb pt-handle">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="26" width="40" height="8" rx="4" fill="#7A7A75"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">HD-CNC</span>
+                <span class="part-name">Concealed handle</span>
+                <span class="part-hint">Compatible with acrylic</span>
+              </div>
+              <div class="part-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-handle">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 30 L14 20 L46 20 L50 30 L46 40 L14 40 Z" fill="#7A7A75"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">HD-GPR</span>
+                <span class="part-name">G-profile (handleless)</span>
+                <span class="part-hint">Aluminium / Silver — Ebco</span>
+              </div>
+            </div>
+            <div class="part-item">
+              <div class="part-thumb pt-handle">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="28" width="44" height="4" fill="#7A7A75"/>
+                  <rect x="8" y="32" width="44" height="4" fill="#5F5E5A"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">HD-LMZ</span>
+                <span class="part-name">Lamezia (handleless)</span>
+                <span class="part-hint">Kitchen shutter only</span>
+              </div>
+            </div>
+            <div class="part-item disabled">
+              <div class="part-thumb pt-handle">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="14" y="22" width="32" height="16" fill="#8B6B4A"/>
+                </svg>
+              </div>
+              <div class="part-meta">
+                <span class="part-code">HD-WD-C</span>
+                <span class="part-name">Wooden handle (custom)</span>
+                <span class="part-warn-text">Not possible · use surface handle in wood finish</span>
+              </div>
+              <div class="part-warn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </aside>
 
@@ -147,13 +506,12 @@
     <section class="assembly-panel">
       <div class="assembly-frame">
 
-        <!-- Spec ribbon down the left edge -->
         <aside class="spec-ribbon">
           <span class="ribbon-label">ASSEMBLY</span>
           <span class="ribbon-mono">CFG · 001 · DRAFT</span>
         </aside>
 
-        <!-- Faux 3D isometric SVG representation -->
+        <!-- Isometric SVG rendering of assembled cabinet -->
         <div class="assembly-canvas">
           <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -171,18 +529,12 @@
               </linearGradient>
             </defs>
 
-            <!-- Floor shadow -->
             <ellipse cx="260" cy="440" rx="180" ry="16" fill="#000" opacity="0.12"/>
 
-            <!-- Cabinet body (isometric) -->
-            <!-- Top face -->
             <polygon points="120,120 340,120 400,80 180,80" fill="url(#cabinetTop)" stroke="#000" stroke-width="0.5" stroke-opacity="0.2"/>
-            <!-- Front face -->
             <polygon points="120,120 340,120 340,410 120,410" fill="url(#cabinetFront)" stroke="#000" stroke-width="0.5" stroke-opacity="0.3"/>
-            <!-- Right side -->
             <polygon points="340,120 400,80 400,370 340,410" fill="url(#cabinetSide)" stroke="#000" stroke-width="0.5" stroke-opacity="0.3"/>
 
-            <!-- Groove pattern on front (6mm grooves) -->
             <g opacity="0.75">
               <line x1="155" y1="130" x2="155" y2="405" stroke="#000" stroke-width="1.2"/>
               <line x1="180" y1="130" x2="180" y2="405" stroke="#000" stroke-width="1.2"/>
@@ -193,26 +545,21 @@
               <line x1="305" y1="130" x2="305" y2="405" stroke="#000" stroke-width="1.2"/>
             </g>
 
-            <!-- Skirting -->
             <polygon points="120,410 340,410 340,430 120,430" fill="#0D0D0C"/>
             <polygon points="340,410 400,370 400,390 340,430" fill="#0A0A09"/>
 
-            <!-- Hinge suggestions on left edge -->
             <circle cx="126" cy="170" r="3" fill="#7A7A75" opacity="0.6"/>
             <circle cx="126" cy="360" r="3" fill="#7A7A75" opacity="0.6"/>
 
-            <!-- Dimension callouts (subtle) -->
             <g opacity="0.5" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B665D">
               <line x1="80" y1="120" x2="80" y2="410" stroke="#B3614E" stroke-width="0.5" stroke-dasharray="2 2"/>
               <text x="55" y="270" text-anchor="middle" transform="rotate(-90 55 270)">700 mm</text>
-
               <line x1="120" y1="470" x2="340" y2="470" stroke="#B3614E" stroke-width="0.5" stroke-dasharray="2 2"/>
               <text x="230" y="485" text-anchor="middle">450 mm</text>
             </g>
           </svg>
         </div>
 
-        <!-- View controls -->
         <div class="assembly-controls">
           <div class="control-group">
             <button class="view-btn active">Isometric</button>
@@ -226,7 +573,18 @@
 
         <div class="assembly-status">
           <span class="status-dot valid"></span>
-          <span class="status-text">Valid configuration · 3 parts assembled</span>
+          <span class="status-text">Valid configuration · 4 parts assembled</span>
+        </div>
+
+        <!-- NEW: rule triggered indicator (concept) -->
+        <div class="rule-triggered">
+          <div class="rt-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="rt-text">
+            <span class="rt-title">3 handbook rules applied to current selection</span>
+            <span class="rt-sub">See "Compliance" panel for details</span>
+          </div>
         </div>
 
         <div class="assembly-hint">
@@ -235,35 +593,33 @@
       </div>
     </section>
 
-    <!-- RIGHT: Live spec summary -->
+    <!-- RIGHT: Live summary + compliance -->
     <aside class="summary-panel">
       <div class="panel-head">
         <span class="panel-eyebrow">Live summary</span>
         <h2 class="panel-title">Your configuration</h2>
       </div>
 
-      <!-- Selected parts -->
       <div class="config-block">
         <div class="block-title">Selected parts</div>
         <div class="config-row">
-          <div class="row-label">Body</div>
-          <div class="row-val">BK-450</div>
+          <div class="row-label">Material</div>
+          <div class="row-val">BD-PL-16 <span class="row-sub">Prelam 16mm</span></div>
         </div>
         <div class="config-row">
           <div class="row-label">Shutter</div>
-          <div class="row-val">PU GS6 <span class="row-sub">6mm Groove</span></div>
+          <div class="row-val">SG-TIT <span class="row-sub">Titanium Grey</span></div>
         </div>
         <div class="config-row">
-          <div class="row-label">Hinges</div>
-          <div class="row-val">HWHT9242902</div>
+          <div class="row-label">Frame</div>
+          <div class="row-val">SG-FR-CHM <span class="row-sub">Champagne</span></div>
         </div>
         <div class="config-row">
-          <div class="row-label">Finish</div>
-          <div class="row-val">PU 4009 MT</div>
+          <div class="row-label">Handle</div>
+          <div class="row-val">HD-CNC <span class="row-sub">Concealed</span></div>
         </div>
       </div>
 
-      <!-- Dimensions -->
       <div class="config-block">
         <div class="block-title">Dimensions</div>
         <div class="dim-grid">
@@ -282,79 +638,87 @@
         </div>
       </div>
 
-      <!-- Compliance -->
+      <!-- Compliance — now with source annotation showing handbook page -->
       <div class="config-block">
-        <div class="block-title">Compliance</div>
+        <div class="block-title">Handbook compliance <span class="block-meta">Auto-checked</span></div>
         <div class="compliance-list">
           <div class="compliance-item ok">
-            <div class="c-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="c-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="c-text">
+              Prelam 16mm is 5.5 or 16 only ✓
+              <span class="c-source">Prelam handbook, thickness rule</span>
             </div>
-            <div class="c-text">Within published width range (300–600 mm)</div>
           </div>
           <div class="compliance-item ok">
-            <div class="c-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="c-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="c-text">
+              Saint Gobain size 450×700 within 300-500 × 200-1200 ✓
+              <span class="c-source">Saint Gobain handbook, size limits</span>
             </div>
-            <div class="c-text">Shutter clearance of 3 mm applied</div>
           </div>
           <div class="compliance-item ok">
-            <div class="c-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="c-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="c-text">
+              Concealed handle compatible with acrylic + kitchen shutter ✓
+              <span class="c-source">Handles compatibility matrix</span>
             </div>
-            <div class="c-text">Hinge compatible with 25 mm shutter</div>
+          </div>
+          <div class="compliance-item warn">
+            <div class="c-icon warn-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+            <div class="c-text">
+              Saint Gobain shutter cannot sit next to profiled laminate
+              <span class="c-source">Saint Gobain handbook, mixing rule — check adjacent units</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- BOM count -->
       <div class="config-block">
         <div class="block-title">Bill of materials</div>
         <div class="bom-summary">
           <span class="bom-count">9 items</span>
-          <span class="bom-hint">Auto-generated · ready for procurement</span>
+          <span class="bom-hint">Auto-generated · ERP-coded · ready for procurement</span>
         </div>
       </div>
 
-      <!-- Actions -->
       <div class="config-actions">
         <button class="action-primary" disabled>
           <span>Send to ODP</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </button>
         <button class="action-secondary" disabled>Save draft</button>
       </div>
 
       <p class="concept-note">
-        Buttons are non-functional in this preview. Live version would push a spec-perfect BOM into ODP and open the 3D file for placement.
+        Buttons and interactions are non-functional in this concept. Live version would push the BOM to ODP and open 3D file for placement.
       </p>
     </aside>
 
   </section>
 
-  <!-- Explanation strip -->
+  <!-- Explanation strip — the "why" for Neelam -->
   <section class="explain-strip">
     <div class="explain-item">
       <div class="explain-num">01</div>
       <div class="explain-body">
-        <h3 class="explain-title">Same parts, different products</h3>
-        <p class="explain-text">A "bottom cabinet body" isn't a kitchen thing — it's a modular block. The same body configured for the loft becomes a storage cabinet. Different context, same validated part.</p>
+        <h3 class="explain-title">Handbook at the point of choice</h3>
+        <p class="explain-text">Rules appear inline while the designer is picking. Not a document to reference — a check that fires as choices are made.</p>
       </div>
     </div>
 
     <div class="explain-item">
       <div class="explain-num">02</div>
       <div class="explain-body">
-        <h3 class="explain-title">Constraints are enforced automatically</h3>
-        <p class="explain-text">If a designer picks a shutter incompatible with the chosen hinge, the invalid combination is greyed out. No more silent mismatches making it to site.</p>
+        <h3 class="explain-title">NCs prevented at source</h3>
+        <p class="explain-text">Wrong parts are disabled. Incompatible combinations flag before submission. QC catches nothing new — because nothing new escaped.</p>
       </div>
     </div>
 
     <div class="explain-item">
       <div class="explain-num">03</div>
       <div class="explain-body">
-        <h3 class="explain-title">Output is production-ready</h3>
-        <p class="explain-text">Every valid configuration produces a complete BOM with ERP codes. Push to ODP, procurement receives the exact list, factory receives the exact build. Zero interpretation.</p>
+        <h3 class="explain-title">One source of truth, one interface</h3>
+        <p class="explain-text">iLab updates handbook data → all configurator rules update automatically. No parallel systems, no drift.</p>
       </div>
     </div>
   </section>
@@ -366,11 +730,31 @@
     </div>
     <div class="foot-right">
       <span>iLab · Innovation initiative</span>
-      <span class="foot-mono">CFG-001 · Concept preview · Internal only</span>
+      <span class="foot-mono">CFG-001 · Concept preview · Handbook v3.9</span>
     </div>
   </footer>
 
 </main>
+
+<script>
+// ===== Tab switching =====
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.cat;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === target));
+    document.querySelectorAll('.cat-content').forEach(c => c.classList.toggle('active', c.dataset.cat === target));
+    // Update search placeholder
+    const catName = tab.textContent;
+    document.querySelector('.parts-search input').placeholder = 'Search ' + catName;
+  });
+});
+
+// ===== Expandable handbook details =====
+function toggleDetails(button) {
+  const details = button.closest('.handbook-details');
+  details.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
