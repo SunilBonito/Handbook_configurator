@@ -1,5 +1,5 @@
 /* ============================================================
-   Bonito Handbook — Category Data
+   Bonito Handbook - Category Data
    This is the data structure that would live in a CMS.
    In production, this comes from an API. For now, it's a JS file.
    Adding a new category = adding a new object here.
@@ -20,14 +20,14 @@ const CATEGORIES = {
     title: "Pre-Lam HDHMR",
     lede: "A factory-made engineered board where the laminate is already pressed and bonded during manufacturing. Not pasted later at the factory or on-site.",
 
-    // Poster measurements — this category has thickness options rather than dimensions
+    // Poster measurements - this category has thickness options rather than dimensions
     measurements: [
       { axis: "Thickness", range: "5.5", unit: "mm" },
       { axis: "Thickness", range: "16", unit: "mm" },
       { axis: "Production", range: "X<span class=\"m-dash\">−</span>2", unit: "days" },
     ],
 
-    // Feature blocks — each is a titled section on the page
+    // Feature blocks - each is a titled section on the page
     blocks: [
       {
         num: "01",
@@ -38,11 +38,11 @@ const CATEGORIES = {
         num: "02",
         title: "Prelam vs Regular HDHMR",
         subtitle: "Choose Prelam when finish is locked. Choose Regular when the client wants a custom laminate or acrylic that isn't in the standard 36.",
-        // Comparison table — a different visual pattern per category
+        // Comparison table - a different visual pattern per category
         comparisonTable: {
           headers: ["", "Prelam HDHMR", "Regular HDHMR"],
           rows: [
-            ["Surface finish", "Laminate factory-pressed", "Raw board — finish applied later"],
+            ["Surface finish", "Laminate factory-pressed", "Raw board - finish applied later"],
             ["Customization", "36 pre-lam options only", "Any laminate, acrylic, PU"],
             ["Production time", "X − 2 days (faster)", "X days"],
             ["Thickness", "5.5mm, 16mm", "6mm, 18mm, 24mm"],
@@ -67,7 +67,7 @@ const CATEGORIES = {
       },
       {
         num: "04",
-        title: "Critical rules — read every time",
+        title: "Critical rules - read every time",
         notes: [
           { title: "Thickness already includes laminate.", body: "Do not add extra thickness in your quote. 16 mm Prelam is 16 mm total, not 16 + laminate." },
           { title: "24 mm Prelam is not available.", body: "If the design needs 24 mm, switch to Regular HDHMR. No exceptions." },
@@ -89,7 +89,7 @@ const CATEGORIES = {
 
     eyebrow: "Kitchen shutter · Lacquered glass",
     title: "Saint Gobain<br>Kitchen Shutters",
-    lede: "Premium lacquered glass shutters for kitchen, storage and crockery units. A dedicated shutter category — not the same as regular glass and mirrors.",
+    lede: "Premium lacquered glass shutters for kitchen, storage and crockery units. A dedicated shutter category - not the same as regular glass and mirrors.",
 
     measurements: [
       { axis: "Width", range: "300<span class=\"m-dash\">−</span>500", unit: "mm" },
@@ -101,13 +101,13 @@ const CATEGORIES = {
       {
         num: "01",
         title: "What is Saint Gobain?",
-        prose: "Saint Gobain Planilaque is lacquered glass — a coloured coating fused to the back of the glass sheet. The result is a premium, high-gloss surface that reads as depth, not as paint. Kitchen shutter category only. Frame profiles come in three colour options: champagne, grey, silver."
+        prose: "Saint Gobain Planilaque is lacquered glass - a coloured coating fused to the back of the glass sheet. The result is a premium, high-gloss surface that reads as depth, not as paint. Kitchen shutter category only. Frame profiles come in three colour options: champagne, grey, silver."
       },
       {
         num: "02",
         title: "Colour library",
         subtitle: "Colours must be picked from this palette or from the in-app catalog. Custom colours are not offered.",
-        // Special: colour palette — this makes this page visually distinct
+        // Special: colour palette - this makes this page visually distinct
         colourPalette: [
           {
             group: "Planilaque colours",
@@ -172,7 +172,7 @@ const CATEGORIES = {
       },
       {
         num: "04",
-        title: "Critical rules — read every time",
+        title: "Critical rules - read every time",
         notes: [
           { title: "Do not mix with profiled laminated shutters.", body: "Saint Gobain shutters must not be placed next to profiled laminate shutters. Thickness variations at profile handles (G-profile, Lamezia, Gola) will create a visible seam that clients will call out." },
           { title: "Not for 24 mm side panels.", body: "Saint Gobain kitchen shutters cannot be provided when the adjacent side panel is 24 mm thick. Standard 18 mm side panels only." },
@@ -193,7 +193,7 @@ const CATEGORIES = {
 
     eyebrow: "Wardrobe system · Shutters + mechanism",
     title: "Modular Wardrobe<br>& Mechanism",
-    lede: "Two shutter families — openable and sliding — with their compatible mechanisms. Selecting the shutter type constrains the mechanism, hardware, and infill options that follow.",
+    lede: "Two shutter families - openable and sliding - with their compatible mechanisms. Selecting the shutter type constrains the mechanism, hardware, and infill options that follow.",
 
     measurements: [
       { axis: "Shutter type", range: "2", unit: "families" },
@@ -205,19 +205,19 @@ const CATEGORIES = {
       {
         num: "01",
         title: "Two shutter families",
-        prose: "The first decision is openable vs sliding — this cascades to every other choice. Openable uses hinges; sliding uses tracks. Aluminium profile shutters are a third path with Saint Gobain, Hettich, and Bonito Elite/Lite options. Each family has its own compatible mechanism set."
+        prose: "The first decision is openable vs sliding - this cascades to every other choice. Openable uses hinges; sliding uses tracks. Aluminium profile shutters are a third path with Saint Gobain, Hettich, and Bonito Elite/Lite options. Each family has its own compatible mechanism set."
       },
       {
         num: "02",
         title: "System matrix",
         subtitle: "Pick a shutter family. The mechanism options that follow are constrained by that choice.",
-        // Matrix-style comparison — different from Prelam's comparison table
+        // Matrix-style comparison - different from Prelam's comparison table
         systemMatrix: [
           {
             family: "Openable shutter",
             heading: "Hinged, opens outward",
             options: [
-              { label: "Aristo Classical Doors", type: "Sub-brand", note: "Aristo Nova — same construction as C&F slider" },
+              { label: "Aristo Classical Doors", type: "Sub-brand", note: "Aristo Nova - same construction as C&F slider" },
               { label: "Hinges: 0°, 8°, 16° crank", type: "Hardware", note: "All with soft-close · Bonito Elite pivot also available" },
               { label: "Standard shutter finish", type: "Compatibility", note: "Laminate, Acrylic, Crystal Acrylic, PU, Membrane" }
             ]
@@ -245,7 +245,7 @@ const CATEGORIES = {
       },
       {
         num: "03",
-        title: "Cane infill — the exception rule",
+        title: "Cane infill - the exception rule",
         subtitle: "Aristo Cane shutters follow non-obvious size rules. Get this wrong and the panel warps.",
         // Callout with structured rule
         ruleCards: [
@@ -270,13 +270,13 @@ const CATEGORIES = {
           { key: "Sliding systems", val: "Bonito Elite · Bonito Lite · Topline L · Slideline 18" },
           { key: "Top-lift mechanism", val: "Kessebohmer Lift up (kitchens) · Hydraulic lift" },
           { key: "Push-to-open", val: "Tip-On mechanism (Ebco)" },
-          { key: "Wardrobe accessories", val: "Bonito Studio only — shirt / belt pullout / organisers / iron" },
+          { key: "Wardrobe accessories", val: "Bonito Studio only - shirt / belt pullout / organisers / iron" },
           { key: "Freeflap / Freefold", val: "Folding bracket for wardrobe internal" }
         ]
       },
       {
         num: "05",
-        title: "Critical rules — read every time",
+        title: "Critical rules - read every time",
         notes: [
           { title: "Cane width is height-dependent.", body: "Confirm the height first, then apply the width cap. 900 mm max for cane heights up to 2100 mm; 1200 mm max only for cane heights up to 900 mm." },
           { title: "Accessories from Bonito Studio only.", body: "Do not source wardrobe accessories (shirt/belt pullout, organisers, in-built iron) from anywhere except Bonito Studio. Compatibility is not guaranteed for non-Studio sources." },
@@ -297,7 +297,7 @@ const CATEGORIES = {
 
     eyebrow: "Hardware · Grip + handleless",
     title: "Handles &<br>Handleless Systems",
-    lede: "The final touch, and often the deal-breaker on-site. Two families: physical handles selected from Bonito Studio only, and handleless profiles built into the shutter itself. Category has strict compatibility rules — especially for kitchens.",
+    lede: "The final touch, and often the deal-breaker on-site. Two families: physical handles selected from Bonito Studio only, and handleless profiles built into the shutter itself. Category has strict compatibility rules - especially for kitchens.",
 
     measurements: [
       { axis: "Handle types", range: "3", unit: "families" },
@@ -310,7 +310,7 @@ const CATEGORIES = {
         num: "01",
         title: "Handle families",
         subtitle: "Three physical-handle families and three handleless profiles. Physical handles must be sourced from Bonito Studio only.",
-        // Handle types shown as a card grid — a fourth visual pattern
+        // Handle types shown as a card grid - a fourth visual pattern
         handleGrid: [
           {
             family: "Physical handles",
@@ -325,7 +325,7 @@ const CATEGORIES = {
             family: "Handleless profiles",
             subheading: "Built into shutter",
             items: [
-              { name: "G-profile", subline: "Aluminium / Silver — Ebco", note: "Any shutter finish" },
+              { name: "G-profile", subline: "Aluminium / Silver - Ebco", note: "Any shutter finish" },
               { name: "Edge profile / Lamezia", subline: "Kitchen shutters only", note: "Not for tall shutters or wardrobe" },
               { name: "Gola profile", subline: "Shutter extension for top / loft", note: "See Bonito Gola training" }
             ]
@@ -339,18 +339,18 @@ const CATEGORIES = {
         compatibilityTable: {
           headers: ["Handle type", "Kitchen shutter", "Kitchen tall", "Wardrobe", "Acrylic shutter"],
           rows: [
-            ["Concealed handle", "Yes", "Yes", "Yes", "Yes — recommended"],
+            ["Concealed handle", "Yes", "Yes", "Yes", "Yes - recommended"],
             ["Folding handle", "Yes", "Yes", "Yes", "Yes"],
             ["Surface handle", "Yes", "Yes", "Yes", "Yes"],
             ["G-profile", "Yes", "Yes", "Yes", "No"],
-            ["Lamezia", "Yes — kitchen only", "No", "No", "No"],
+            ["Lamezia", "Yes - kitchen only", "No", "No", "No"],
             ["Gola profile", "Top / Loft only", "No", "Top / Loft only", "No"]
           ]
         }
       },
       {
         num: "03",
-        title: "Critical rules — read every time",
+        title: "Critical rules - read every time",
         notes: [
           { title: "Lamezia is kitchen-shutter only.", body: "Not for kitchen tall shutters. Not for wardrobe shutters. Only for standard kitchen bottom and wall shutters." },
           { title: "No customised handles on shutters.", body: "Do not accept client requests for custom handle positioning or non-Studio handles. Compatibility with soft-close hinges and pull mechanisms will fail." },
@@ -360,7 +360,7 @@ const CATEGORIES = {
       }
     ],
 
-    reference: "Bonito Training Document — Gola Profile"
+    reference: "Bonito Training Document - Gola Profile"
   }
 };
 
